@@ -12,13 +12,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const numerosOriginais = document.getElementById("numerosOriginais");
   const numerosMultiplicados = document.getElementById("numerosMultiplicados");
 
+  numerosOriginais.innerText = `Array original: ${numeros.join(", ")}`;
+
   botaoTexto.addEventListener("click", () => {
     paragrafo.innerText = "Agora o texto foi alterado!"
   });
 
-  botaoMultiplica.addEventListener("cick", () => {
+  if (numerosOriginais && numerosMultiplicados && botaoMultiplica) {
+    numerosOriginais.innerText = `Array original: ${numeros.join(", ")}`;
+    
+    botaoMultiplica.addEventListener("click", () => {
+        const resultado = numeros.map(num => num * 2);
+        numerosMultiplicados.innerText = `Array multiplicado: ${resultado.join(", ")}`;
+    });
+  }
 
-  });
+
+
 });
 
 
