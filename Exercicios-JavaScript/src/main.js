@@ -37,8 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const listaFrutas = document.getElementById("listaFrutas");
   const botaoPercorrer = document.getElementById("botaoPercorrer");
 
+  const botaoBuscarUsuario = document.getElementById("botaoBuscarUsuario");
+  const usuarioNome = document.getElementById("usuarioNome");
 
+  const botaoSalvar = document.getElementById("botaoSalvar");
+  const botaoRecuperar = document.getElementById("botaoRecuperar");
+  const usuarioRecuperado = document.getElementById("usuarioRecuperado");
 
+  const usuario = {
+    nome: "João Silva",
+    idade: 30,
+    email: "joao.silva@email.com"
+  };
+
+  const relogio = document.getElementById("relogio");
 
 
   botaoTexto.addEventListener("click", () => {
@@ -94,6 +106,51 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  if (botaoBuscarUsuario && usuarioNome) {
+    botaoBuscarUsuario.addEventListener("click", async () => {
+      try {
+        const resposta = await fetch("https://jsonplaceholder.typicode.com/users/1");
+        if (!resposta.ok) {
+          throw new Error("Erro ao buscar os dados");
+        }
+        const usuario = await resposta.json();
+        usuarioNome.innerText = `Nome do usuário: ${usuario.name}`;
+      } catch (erro) {
+        usuarioNome.innerText = "Erro ao carregar usuário.";
+        console.error("Erro na requisição:", erro);
+      }
+    });
+  }
+
+  botaoSalvar.addEventListener("click", () => {
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+    alert("Usuário salvo no LocalStorage!");
+  });
+
+  botaoRecuperar.addEventListener("click", () => {
+    const usuarioSalvo = localStorage.getItem("usuario");
+
+    if (usuarioSalvo) {
+      const usuarioObjeto = JSON.parse(usuarioSalvo);
+      usuarioRecuperado.innerText = `Nome: ${usuarioObjeto.nome}, Idade: ${usuarioObjeto.idade}, Email: ${usuarioObjeto.email}`;
+    } else {
+      usuarioRecuperado.innerText = "Nenhum usuário encontrado.";
+    }
+  });
+
+  function atualizarRelogio() {
+    const agora = new Date();
+    const horas = agora.getHours().toString().padStart(2, "0");
+    const minutos = agora.getMinutes().toString().padStart(2, "0");
+    const segundos = agora.getSeconds().toString().padStart(2, "0");
+
+    relogio.innerText = `${horas}:${minutos}:${segundos}`;
+  }
+
+  setInterval(atualizarRelogio, 1000);
+  atualizarRelogio();
+
 
 });
 
