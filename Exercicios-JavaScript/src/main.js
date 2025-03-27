@@ -22,6 +22,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   numerosOriginais.innerText = `Array original: ${numeros.join(", ")}`;
 
+  const produtos = [
+    {nome: "Camiseta", preco: 30},
+    {nome: "Calças", preço: 60},
+    {nome: "Tênis", preço: 150},
+    {nome: "Computador", preço: 2000}
+  ];
+  
+  const listaProdutos = document.getElementById("listaProdutos");
+  const produtoEncontrado = document.getElementById("produtoEncontrado");
+  const botaoBuscarProduto = document.getElementById("botaoBuscarProduto");
+
+
+
+
+
+
+
   botaoTexto.addEventListener("click", () => {
     paragrafo.innerText = "Agora o texto foi alterado!"
   });
