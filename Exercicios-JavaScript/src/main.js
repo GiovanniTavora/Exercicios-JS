@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const produtoEncontrado = document.getElementById("produtoEncontrado");
   const botaoBuscarProduto = document.getElementById("botaoBuscarProduto");
 
-
+  const frutas = ["Maçã", "Banana", "Morango", "Uva", "Laranja"];
+  const listaFrutas = document.getElementById("listaFrutas");
+  const botaoPercorrer = document.getElementById("botaoPercorrer");
 
 
 
@@ -82,7 +84,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  if (listaFrutas && botaoPercorrer) {
+    listaFrutas.innerText = frutas.join(" | ");
 
+    botaoPercorrer.addEventListener("click", () => {
+      console.log("Percorrendo array de frutas:");
+      frutas.forEach((fruta, index) => {
+        console.log(`${index + 1}. ${fruta}`);
+      });
+    });
+  }
 
 });
 
