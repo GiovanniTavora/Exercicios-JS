@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const produtos = [
     {nome: "Camiseta", preco: 30},
-    {nome: "Calças", preço: 60},
-    {nome: "Tênis", preço: 150},
-    {nome: "Computador", preço: 2000}
+    {nome: "Calças", preco: 60},
+    {nome: "Tênis", preco: 150},
+    {nome: "Computador", preco: 2000}
   ];
-  
+
   const listaProdutos = document.getElementById("listaProdutos");
   const produtoEncontrado = document.getElementById("produtoEncontrado");
   const botaoBuscarProduto = document.getElementById("botaoBuscarProduto");
@@ -67,6 +67,22 @@ document.addEventListener("DOMContentLoaded", () => {
       numerosFiltrados.innerText = `Números maiores que 10: ${resultado.join(", ")}`;
     });
   }
+
+  if (listaProdutos && produtoEncontrado && botaoBuscarProduto) {
+    listaProdutos.innerText = produtos.map(p => `${p.nome}: R$${p.preco}`).join(" | ");
+  
+    botaoBuscarProduto.addEventListener("click", () => {
+      const produto = produtos.find(p => p.preco > 50);
+  
+      if (produto) {
+        produtoEncontrado.innerText = `Produto encontrado: ${produto.nome} - R$${produto.preco}`;
+      } else {
+        produtoEncontrado.innerText = "Nenhum produto acima de R$50 encontrado.";
+      }
+    });
+  }
+
+
 
 });
 
