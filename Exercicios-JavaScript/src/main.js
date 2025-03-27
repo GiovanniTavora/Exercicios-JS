@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const produto = produtos.find(p => p.preco > 50);
   
       if (produto) {
-        produtoEncontrado.innerText = `Produto encontrado: ${produto.nome} - R$${produto.preco}`;
+        produtoEncontrado.innerText = `Primeiro produto encontrado: ${produto.nome} - R$${produto.preco}`;
       } else {
         produtoEncontrado.innerText = "Nenhum produto acima de R$50 encontrado.";
       }
