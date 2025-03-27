@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const numerosOriginais = document.getElementById("numerosOriginais");
   const numerosMultiplicados = document.getElementById("numerosMultiplicados");
 
+  const numerosSomados = document.querySelector("#numerosSomados");
+  const botaoSoma = document.querySelector("#botaoSoma");
+
   numerosOriginais.innerText = `Array original: ${numeros.join(", ")}`;
 
   botaoTexto.addEventListener("click", () => {
@@ -27,7 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
+  if(botaoSoma && numerosSomados){
+    botaoSoma.addEventListener("click", () => {
+      const soma = numeros.reduce((total, num) => total + num, 0);
+      numerosSomados.innerText = `Soma dos números: ${soma}`
+    });
+  }
 
 });
 
