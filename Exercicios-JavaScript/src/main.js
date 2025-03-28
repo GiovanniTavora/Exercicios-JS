@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     email: "joao.silva@email.com"
   };
 
+  const formulario = document.getElementById("meuFormulario");
+
+
   const relogio = document.getElementById("relogio");
 
 
@@ -150,6 +153,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setInterval(atualizarRelogio, 1000);
   atualizarRelogio();
+
+  formulario.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const nomeInput = document.getElementById("nome").value.trim();
+
+    if (nomeInput === "") {
+      alert("O campo Nome não pode estar vazio!");
+    } else {
+      alert(`Formulário enviado com sucesso! Nome: ${nomeInput}`);
+      formulario.reset();
+    }
+  });
 
 
 });
